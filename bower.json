@@ -1,0 +1,20 @@
+{
+  "name": "Jtimer",
+  "homepage": "https://github.com/huangnan1/Jtimer",
+  "authors": [
+    "blasten"
+  ],
+  "description": "Jtimer",
+  "main": ["JTimer.js"],
+  "moduleType": [],
+  "version": "1.0",
+  "keywords": [
+    "Jtimer"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "./node_modules/bower_components"
+  ]
+}
