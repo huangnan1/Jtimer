@@ -37,8 +37,8 @@ var JTC = (function() {
                 en: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
             },
             weekDay: {
-                zh: ['周日','周一', '周二', '周三', '周四', '周五', '周六'],
-                en: ['Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+                zh: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
+                en: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
             },
             clearBn: {
                 zh: '清空',
@@ -321,6 +321,7 @@ var JTC = (function() {
                 } else {
                     obj.innerHTML = str;
                 }
+                if (arg != undefined && JTC.callback) JTC.callback(arg);
             }
         },
 
@@ -678,7 +679,7 @@ var JTC = (function() {
                 util.setObjectStyle(cell, style);
                 cell.id = config.monthCell;
                 cell.title = util.getLangText(lang.monthCell);
-                cell.align='right';
+                cell.align = 'right';
                 // cell.onmousemove = function() {
                 //     this.style.backgroundColor = config.dayBgColor[2];
                 // };
@@ -691,9 +692,9 @@ var JTC = (function() {
 
                 cell = row.insertCell(2);
                 util.setObjectStyle(cell, style);
-                cell.id =  config.yearCell;
+                cell.id = config.yearCell;
                 cell.title = util.getLangText(lang.yearCell);
-                cell.align='left';
+                cell.align = 'left';
                 // cell.onmousemove = function() {
                 //     this.style.backgroundColor = config.dayBgColor[2];
                 // };
@@ -814,7 +815,8 @@ var JTC = (function() {
             document.body.appendChild(div);
         };
 
-    JTC.setday = function(args) {
+    JTC.setday = function(args, callback) {
+        if (callback) JTC.callback = callback;
         var obj = util.getEventSrcObject();
         var x = util.copyConfig();
         x.outObject = obj;
@@ -878,5 +880,6 @@ var JTC = (function() {
     JTC.setStartDay = function(date) {
         config.startDay = util.setDate(date);
     }
+
     return JTC;
 })();
